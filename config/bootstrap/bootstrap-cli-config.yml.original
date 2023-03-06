@@ -55,8 +55,9 @@ bootstrap:
     # Mapping between IDP (Azure Active Directory) groups and CDF groups.
     idp-cdf-mappings:
     # Support multiple CDF Projects, like dev/test/prod in one config.
-        - cdf-project: cdf-bootcamp-45-test # i.e. bootcamp-01-test
+        - cdf-project: cdf bootcamp-45-test # i.e. bootcamp-01-test
           mappings:
+
               - cdf-group: cdf:root
                 idp-source-id: 9bfaa230-11b0-4714-97fe-9505db8e3204
                 idp-source-name: bootcamp-45-test-admin
@@ -67,42 +68,37 @@ bootstrap:
                 idp-source-id: 7b8284d0-d4e3-469e-a486-e1321247cb87 # for the AAD Group to be matched to cdf-group
                 idp-source-name: bootcamp-45-test-all-read # i.e. bootcamp-01-test-all-read
 
-    # Support multiple CDF Projects, like dev/test/prod in one config.
-        - cdf-project: cdf-bootcamp-45-prod # i.e. bootcamp-01-test
+        - cdf-project: cdf bootcamp-45-prod # i.e. bootcamp-01-test
           mappings:
+
               - cdf-group: cdf:root
                 idp-source-id: ccd6838c-eca4-4cc5-b69c-4e5864d0cc03
                 idp-source-name: bootcamp-45-prod-admin
               - cdf-group: cdf:all:owner
-                idp-source-id: cda4895e-c1ea-4e49-8e69-1b3764074d0c  # for the AAD Group to be matched to cdf-group
+                idp-source-id: cda4895e-c1ea-4e49-8e69-1b3764074d0c # for the AAD Group to be matched to cdf-group
                 idp-source-name: bootcamp-45-prod-all-owner # i.e. bootcamp-01-test-all-owner
               - cdf-group: cdf:all:read
                 idp-source-id: b6cd9d6c-9c93-4b0d-98bc-b89be95a8e1d # for the AAD Group to be matched to cdf-group
                 idp-source-name: bootcamp-45-prod-all-read # i.e. bootcamp-01-test-all-read
 
-
     namespaces:
-
-        # This is source namespace
+      # Typical config will have separate namespace by data source ("src") and use cases ("uc")
         - ns-name: src
-          description: Data sources for the Ice Cream Factory
-
-          # There are two nodes: sap and opcua
+          description: Sources used for data extraction
+        # Description names will normally follow src:001:srcname or uc:001:usecasename naming convention
           ns-nodes:
               - node-name: src:001:sap
-                description: Source 01 data from SAP # HINT
+                description: Source 01 data from SAP
               - node-name: src:002:opcua
-                description: Source 02 data from opcua # HINT
-
-
-        # This is uc namespace
+                description: Source 02 data from opcua
+      # Typical config will have separate namespace by data source ("src") and use cases ("uc")
         - ns-name: uc
-          description: Use cases representing the data/products # HINT
+          description: Use cases representing the data/products
 
-          # Node names will normally follow src:001:srcname or uc:001:usecasename naming convention
+        # Description names will normally follow src:001:srcname or uc:001:usecasename naming convention
           ns-nodes:
               - node-name: uc:001:oee
-                description: Use case 001 Overall Equipment Effectiveness
+                description: Use case 001 Over all Equipment effectiveness
                 shared-access:
                     read:
                         - node-name: src:001:sap
