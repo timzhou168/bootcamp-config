@@ -1,6 +1,6 @@
 ---
 # Manifest file downloaded from fusion
-externalId: tr-ts_assets_mapping_ui
+externalId: tr-ts_assets_mapping
 name: ts_assets_mapping
 query:
     file: transformation.sql
